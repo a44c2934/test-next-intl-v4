@@ -18,7 +18,7 @@ export default function Home() {
       <div>
         <h1>{t("welcome")}</h1>
         <div className="mb-3">
-          <Button variant="success" onClick={() => router.push("/posts/1")}>go to post</Button>
+          <Button variant="success" onClick={() => router.push("/posts/1")}>go to post 1</Button>
         </div>
         <LanguageSwitcher />
       </div>
