@@ -1,12 +1,13 @@
+import { Button } from "react-bootstrap";
 import { useTranslation } from "./TranslationProvider";
 
 const LanguageSwitcher = () => {
 
   const { switchLanguage } = useTranslation();
   return (
-    <div>
-      <button onClick={() => switchLanguage('th')}>Thai</button>
-      <button onClick={() => switchLanguage('en')}>English</button>
+    <div className="d-flex gap-2">
+      <Button onClick={() => switchLanguage('th')}>Thai</Button>
+      <Button onClick={() => switchLanguage('en')}>English</Button>
     </div>
   );
 };

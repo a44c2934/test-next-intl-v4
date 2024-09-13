@@ -2,6 +2,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
+import { Button } from "react-bootstrap";
 
 export default function Home() {
   const t = useTranslations();
@@ -15,10 +16,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>Next-intl v4</h1>
         <h1>{t("welcome")}</h1>
+        <div className="mb-3">
+          <Button variant="success" onClick={() => router.push("/posts/1")}>go to post</Button>
+        </div>
         <LanguageSwitcher />
-        <button onClick={() => router.push("/posts/1")}>go</button>
       </div>
     </>
   );
