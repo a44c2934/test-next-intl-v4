@@ -1,5 +1,4 @@
 body {
-  background: rgb(26, 188, 156);
   background: -moz-linear-gradient(
     -45deg,
     rgba(26, 188, 156, 1) 0%,
@@ -21,4 +20,17 @@ body {
   height: 100vh;
   margin: 0;
   color: #fff;
+}
+table td,
+table th {
+  padding: 4px 8px;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+.content {
+  position: relative;
+  background-color: #00000012;
+  padding: 20px;
+  border-radius: 10px;
 }
