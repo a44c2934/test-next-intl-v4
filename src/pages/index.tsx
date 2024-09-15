@@ -5,24 +5,23 @@ import { useTranslations } from "next-intl";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button, Stack } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, Stack } from "react-bootstrap";
 
 export default function Home() {
   const t = useTranslations();
   const router = useRouter();
   const columns = [
-    { name: 'Name', set: (row: any) => <>{row.name}</> },
-    { name: 'Age', set: (row: any) => <>{row.age}</> },
-    { name: 'Location', set: (row: any) => <>{row.location}</> },
-    { name: 'Gender', set: (row: any) => <>{row.gender}</> },
+    { name: t("table.name"), set: (row: any) => <>{row.name}</> },
+    { name: t("table.age"), set: (row: any) => <>{row.age}</> },
+    { name: t("table.location"), set: (row: any) => <>{row.location}</> },
+    { name: t("table.gender"), set: (row: any) => <>{row.gender}</> },
     {
-      name: () => <div className="text-center">Action</div>,
+      name: () => <div className="text-center">{t("table.action")}</div>,
+      width: "146px",
       set: (row: any) =>
-        <div className="d-flex gap-2">
+        <div className="d-flex justify-content-center gap-2">
           <Button variant="primary" size="sm" onClick={() => router.push(`/posts/${row.id}`)}>ดู</Button>
-          <span>|</span>
           <Button variant="primary" size="sm">ลบ</Button>
-          <span>|</span>
           <Button variant="primary" size="sm">แก้ไข</Button>
         </div>
     },
@@ -69,8 +68,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>{t("welcome")}</h1>
+      <Container>
+        <div className="pt-5">
+          <h1 className="mb-3">{t("welcome")}</h1>
+        </div>
         <Content className="mb-3">
           <TableData
             data={myData}
@@ -80,8 +81,7 @@ export default function Home() {
             }}
           />
         </Content>
-        <LanguageSwitcher />
-      </div>
+      </Container>
     </>
   );
 }

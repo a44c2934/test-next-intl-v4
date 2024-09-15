@@ -6,6 +6,7 @@ interface DataItem {
 
 interface iColumn {
   name: string | (() => JSX.Element)
+  width?: string
   set: (row: any) => JSX.Element
 }
 
@@ -45,46 +46,49 @@ const TableData: React.FC<TableDataProps> = ({
   }, [data])
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <input
-              type="checkbox"
-              checked={selectedItems.length === data.length}
-              className="form-check-input"
-              onChange={handleSelectAll}
-            />
-          </th>
-          {Array.isArray(columns) &&
-            columns.map((column, index) => <th key={index}>
-              {typeof column.name === "string" ? (
-                <>{column.name}</>
-              ) : (
-                column.name()
-              )}
-            </th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {Array.isArray(data) &&
-          data.map((item, index) => (
-            <tr key={index}>
-              <td>
-                <input
-                  type="checkbox"
-                  checked={selectedItems.includes(index)}
-                  className="form-check-input"
-                  onChange={() => handleSelectItem(index)}
-                />
-              </td>
-              {columns.map((column, index) => (
-                <td key={index}>{column.set(item)}</td>
-              ))}
-            </tr>
-          ))}
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className='table'>
+        <thead>
+          <tr>
+            <th style={{ width: "40px" }}>
+              <input
+                type="checkbox"
+                checked={selectedItems.length === data.length}
+                className="form-check-input"
+                onChange={handleSelectAll}
+              />
+            </th>
+            {Array.isArray(columns) &&
+              columns.map((column, index) =>
+                <th key={index} style={{ width: column?.width }}>
+                  {typeof column.name === "string" ? (
+                    <>{column.name}</>
+                  ) : (
+                    column.name()
+                  )}
+                </th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {Array.isArray(data) &&
+            data.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={selectedItems.includes(index)}
+                    className="form-check-input"
+                    onChange={() => handleSelectItem(index)}
+                  />
+                </td>
+                {columns.map((column, index) => (
+                  <td key={index}>{column.set(item)}</td>
+                ))}
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

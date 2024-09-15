@@ -14,12 +14,12 @@ body {
     rgba(26, 188, 156, 1) 0%,
     rgba(142, 68, 173, 1) 100%
   );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   color: #fff;
+}
+main {
+  height: calc(100vh - 100px);
 }
 table td,
 table th {
@@ -33,4 +33,7 @@ input[type="checkbox"] {
   background-color: #00000012;
   padding: 20px;
   border-radius: 10px;
+}
+.navbar {
+  background-color: #00000012;
 }

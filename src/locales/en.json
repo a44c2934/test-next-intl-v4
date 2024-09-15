@@ -1,5 +1,12 @@
 {
   "welcome": "Welcome",
   "title": "title",
-  "post": "post"
+  "post": "post",
+  "table": {
+    "name": "Name",
+    "age": "Age",
+    "location": "Location",
+    "gender": "Gender",
+    "action": "Action"
+  }
 }

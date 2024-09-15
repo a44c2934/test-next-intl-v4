@@ -6,8 +6,8 @@ const LanguageSwitcher = () => {
   const { switchLanguage } = useTranslation();
   return (
     <div className="d-flex gap-2">
-      <Button onClick={() => switchLanguage('th')}>Thai</Button>
-      <Button onClick={() => switchLanguage('en')}>English</Button>
+      <Button size="sm" onClick={() => switchLanguage('th')}>TH</Button>
+      <Button size="sm" onClick={() => switchLanguage('en')}>EN</Button>
     </div>
   );
 };

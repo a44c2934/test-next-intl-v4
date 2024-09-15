@@ -3,12 +3,16 @@ import { TranslationProvider } from "@/components/TranslationProvider";
 
 import "./../styles/bootstrap.css";
 import "./../styles/globals.css";
+import NavbarHead from "@/components/Layout/NavbarHead";
+import MainLayout from "@/components/Layout/MainLayout";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <TranslationProvider>
-      <Component {...pageProps} />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </TranslationProvider>
   );
 }
