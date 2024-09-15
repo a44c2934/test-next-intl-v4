@@ -6,10 +6,10 @@ interface INavbar {
   className?: string
 }
 
-const Footer = ({ className }: INavbar) => {
+const Footer = ({ className = "text-center" }: INavbar) => {
   return (
     <footer>
-      <div className="text-center">
+      <div className={className}>
         versions 1.01
       </div>
     </footer>

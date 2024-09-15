@@ -33,6 +33,10 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
     });
   }, [locale]);
 
+  if (!messages || Object.keys(messages).length === 0) {
+    return <></>; // หรือแสดงสัญลักษณ์โหลดอื่น ๆ
+  }
+
   // ฟังก์ชันสำหรับสลับภาษา
   const switchLanguage = (newLocale: string) => {
     localStorage.setItem('lang', newLocale);
@@ -41,7 +45,15 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TranslationContext.Provider value={{ switchLanguage }}>
-      <NextIntlClientProvider messages={messages} locale={locale}>
+      <NextIntlClientProvider messages={messages} locale={locale}
+      // onError={(error) => {
+      //   if (error.code === 'MISSING_MESSAGE') {
+      //     // console.warn(`Missing translation for: ${error.originalMessage}`);
+      //   } else {
+      //     throw error; // re-throw other errors
+      //   }
+      // }}
+      >
         {children}
       </NextIntlClientProvider>
     </TranslationContext.Provider>

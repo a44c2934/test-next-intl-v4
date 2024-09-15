@@ -3,7 +3,10 @@ import NavbarHead from "./NavbarHead";
 import Footer from "./Footer";
 
 
-export default function MainLayout({ children }: { children: ReactNode }) {
+const MainLayout = ({ children, page }: { children: ReactNode, page: any }) => {
+  if (page.statusCode === 404) {
+    return <>{children}</>
+  }
   return (
     <>
       <NavbarHead />
@@ -12,3 +15,4 @@ export default function MainLayout({ children }: { children: ReactNode }) {
     </>
   )
 }
+export default MainLayout;

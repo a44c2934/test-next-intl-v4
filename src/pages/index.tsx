@@ -12,9 +12,17 @@ export default function Home() {
   const router = useRouter();
   const columns = [
     { name: t("table.name"), set: (row: any) => <>{row.name}</> },
-    { name: t("table.age"), set: (row: any) => <>{row.age}</> },
+    {
+      name: t("table.age"),
+      width: "100px",
+      set: (row: any) => <>{row.age}</>
+    },
     { name: t("table.location"), set: (row: any) => <>{row.location}</> },
-    { name: t("table.gender"), set: (row: any) => <>{row.gender}</> },
+    {
+      name: t("table.gender"),
+      width: "180px",
+      set: (row: any) => <>{row.gender ?? "-"}</>
+    },
     {
       name: () => <div className="text-center">{t("table.action")}</div>,
       width: "146px",
